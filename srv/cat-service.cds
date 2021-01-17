@@ -6,46 +6,78 @@ service CatalogService {
     entity FreightOrderItems as projection on my.FreightOrderItems;
 }
 
+annotate CatalogService.FreightOrders with {
+  fo_type @( Common: { Label: 'Order Type'} );
+  carrier @( Common.Label: 'Carrier' );
+}
+
 annotate CatalogService.FreightOrders with @(
     //Freight Order List
     UI : {
         
         SelectionFields         : [
             fo_type,
-            exec_status
+            carrier
         ],
 
         LineItem                : [
             {
                 $Type : 'UI.DataField',
+                Label : 'Order Number',
                 Value : doc_number,
                 ![@UI.Importance] : #High
             },
             {
                 $Type : 'UI.DataField',
-                Value : carrier,
-                ![@UI.Importance] : #Medium
+                Label : 'Order Type',
+                Value : fo_type,                
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Order Type Description',
+                Value : fo_type_descr,                
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Execution Status',
+                Value : exec_status,                
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Mode of Transport',
+                Value : transp_mode,
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Carrier',
+                Value : carrier,
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Source Location',
                 Value : source_loc
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Departure Date',
                 Value : departure
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Destination Location',
                 Value : dest_loc
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Arrival Date',
                 Value : arrival
             }
         ]
 
     },
-
+    // Freight Order Page
     UI: {
         HeaderInfo              : {
             TypeName       : 'Freight Order',
@@ -95,18 +127,22 @@ annotate CatalogService.FreightOrders with @(
            
             {
                 $Type : 'UI.DataField',
+                Label : 'Source Location',
                 Value : source_loc
             },
             {
                 $Type : 'UI.DataField',
+                Label: 'Departure Date',
                 Value : departure
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Destination Location',
                 Value : dest_loc
             },
             {
                 $Type : 'UI.DataField',
+                Label : 'Arrival Date',
                 Value : arrival
             }
         ]}
@@ -114,7 +150,6 @@ annotate CatalogService.FreightOrders with @(
 
     UI.Facets : [
         
-
         {
             $Type  : 'UI.CollectionFacet',
             ID     : 'FODetails',
@@ -134,7 +169,7 @@ annotate CatalogService.FreightOrders with @(
 
 annotate CatalogService.FreightOrderItems with @( 
 
-    // PO Items List
+    // PO Items in the Freight Order Page
     UI        : {
         LineItem            : [
             {
@@ -183,11 +218,3 @@ annotate CatalogService.FreightOrderItems with @(
     }
 );
 
-annotate CatalogService.FreightOrders {
-    doc_number @(Common : {Label : 'Order Number'});
-    carrier    @(Common.Label : 'Carrier');
-    source_loc @(Common.Label : 'Source Location');
-    departure  @(Common.Label : 'Departure Date');
-    dest_loc   @(Common.Label : 'Destination Location');
-    arrival    @(Common.Label : 'Arrival Date');
-}

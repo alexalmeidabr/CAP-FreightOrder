@@ -3,7 +3,7 @@ using { Currency } from '@sap/cds/common';
 
 entity FreightOrders {
     
-    key doc_number  : Integer;
+    key doc_number  : String;
     fo_type         : String;
     fo_type_descr   : String;
     subcontr_rel    : Boolean;
