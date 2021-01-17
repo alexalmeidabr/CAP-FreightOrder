@@ -32,7 +32,7 @@ entity FreightOrders {
     source_loc      : String;
     departure       : DateTime;
     dest_loc        : String;
-    arrival         : DateTime;
+    arrival         : String;
     items           : Composition of many FreightOrderItems on items.parent = $self;
 }
 
@@ -54,6 +54,19 @@ entity FreightOrderItems {
     shipper       : String;
     shipperto_party : String;    
     
+}
+
+entity Locations {
+
+    key loc_code : String;
+    loc_descr    : String;
+    street       : String;
+    number       : String;
+    post_code    : String;
+    city         : String;
+    region       : String;
+    country      : String;
+
 }
 
 entity BusinessPartners {
