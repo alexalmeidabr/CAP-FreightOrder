@@ -1,4 +1,4 @@
-Code,Description,Street,Number,Post code,City,Region,Country
+loc_code,loc_descr,street,number,post_code,city,region,country
 USMIA,Miami Port,1015 North America Way,,33132,Miami,FL,US
 USNJV ,Nashville Rail Terminal,3086 Sidco Dr,,37204,Nashville,TN,US
 USPOT,Tampa Port,1101 Channelside Dr,,33602,Tampa,FL,US
