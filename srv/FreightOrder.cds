@@ -52,7 +52,7 @@ annotate CatalogService.FreightOrders with @(
             {
                 $Type : 'UI.DataField',
                 Label : 'Source Location',
-                Value : source_loc
+                Value : source_loc 
             },
             {
                 $Type : 'UI.DataField',
@@ -123,7 +123,7 @@ annotate CatalogService.FreightOrders with @(
             {
                 $Type : 'UI.DataField',
                 Label : 'Source Location',
-                Value : 'source_loc/@UI.loc_code'
+                Value : source_loc 
             },
             {
                 $Type : 'UI.DataField',

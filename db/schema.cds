@@ -4,6 +4,7 @@ using { Currency } from '@sap/cds/common';
 entity FreightOrders {
     
     key doc_number  : String;
+    source_loc      : Association to Locations;
     fo_type         : String;
     fo_type_descr   : String;
     subcontr_rel    : Boolean;
@@ -29,7 +30,6 @@ entity FreightOrders {
     pe_org_descr    : String;
     purch_org       : Integer;
     purch_org_descr : String;
-    source_loc      : String;
     departure       : DateTime;
     dest_loc        : String;
     arrival         : String;
@@ -40,7 +40,7 @@ entity FreightOrderItems {
     
     key parent      : Association to FreightOrders;
     key item_number : Integer;    
-    parent_item   : Integer;
+    parent_item   : Integer; 
     type          : String;
     descr         : String;
     resource_type : String;
@@ -52,7 +52,7 @@ entity FreightOrderItems {
     volume_UOM    : String;
     dg_ind        : Boolean;
     shipper       : String;
-    shipperto_party : String;    
+    shipperto_party     : String;    
     
 }
 
@@ -71,8 +71,7 @@ entity Locations {
 
 entity BusinessPartners {
   
-  key ID      : UUID;
-  bp_number   : String;
+  key bp_number   : String;
   name        : String;
   street      : String;
   number      : String;

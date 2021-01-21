@@ -1,4 +1,4 @@
-parent_doc_number,Item_number,parent_item,type,descr,resource_type,container,quantity,weight,weight_uom,volume,volume_uom,dg_ind,shipper,shipperto_party
+parent,Item_number,parent_item,type,descr,resource_type,container,quantity,weight,weight_uom,volume,volume_uom,dg_ind,shipper,shipperto_party
 10001001,10,,CONT,Container 42G1,42G1,MSWU4710370,1,5230,KG,65,M3,,,
 10001001,20,10,PACK,Boxes,,,10,1000,KG,50,M4,FALSE,30000109,30000100
 10001001,30,10,PACK,Pallets,,,2,200,KG,15,M5,FALSE,30000109,30000106
