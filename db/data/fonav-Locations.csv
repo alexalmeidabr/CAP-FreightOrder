@@ -1,22 +1,22 @@
-loc_code,loc_descr,street,number,post_code,city,region,country
-USMIA,Miami Port,1015 North America Way,,33132,Miami,FL,US
-USNJV ,Nashville Rail Terminal,3086 Sidco Dr,,37204,Nashville,TN,US
-USPOT,Tampa Port,1101 Channelside Dr,,33602,Tampa,FL,US
-USMIA_FEC,FEC Railway Miami,198 NW 67th Ave,,33166,Miami Springs,FL,US
-USMSY_CSX,CSX Railway New Orleans,6701 Almonaster Ave,,70126,New Orleans,LA,US
-USNJV_FEC,Nashville Rail Terminal,3086 Sidco Dr,,37204,Nashville,TN,US
-USJKV_FEC,FEC Railway Jacksonville,6140 Philips Hwy,,32216,Jacksonville,FL,US
-30000100,AdvanceTec Industries,1150 NW 163rd Dr,,33169,Miami,FL,US
-30000101,Nissan North America,1 Nissan Way,,37067,Franklin,TN,US
-30000102,Diversified Maintenance,5110 Sunforest Dr #250,,33634,Tampa,FL,US
-30000103,Bloomin Brands,2202 N Westshore Blvd STE 500,,33607,Tampa,FL,US
-30000104,University of South Florida,4202 E Fowler Ave,,33620,Tampa,FL,US
-30000105,Entergy,639 Loyola Ave,,70113,New Orleans,LA,US
-30000106,Office Depot,2690 Coral Way,,33145,Miami,FL,US
-30000107,Lennar Corporation,700 NW 107th Ave,,33172,Miami,FL,US
-30000108,Royal Caribbean,1050 Caribbean Way,,33132,Miami,FL,US
-30000109,Intel Corp.,2200 Mission College Blvd.,,95054,Santa Clara,CA,US
-30000110,Pirelli Tire North America LLC,100 Pirelli Dr,,30161,Rome,GA,US
-30000111,Caterpillar,406 U.S. 49 Frontage Rd,,39218,Richland,MS,US
-30000112,Ikea US Sunrise Florida,151 NW 136th Ave,,33325,Sunrise,FL,US
-30000113,3M Brownwood Plant,4501 Highway 377,,76804,Brownwood,TX,US
+ID,loc_code,loc_descr,street,number,post_code,city,region,country
+301,USMIA,Miami Port,1015 North America Way,,33132,Miami,FL,US
+302,USNJV ,Nashville Rail Terminal,3086 Sidco Dr,,37204,Nashville,TN,US
+303,USPOT,Tampa Port,1101 Channelside Dr,,33602,Tampa,FL,US
+304,USMIA_FEC,FEC Railway Miami,198 NW 67th Ave,,33166,Miami Springs,FL,US
+305,USMSY_CSX,CSX Railway New Orleans,6701 Almonaster Ave,,70126,New Orleans,LA,US
+306,USNJV_FEC,Nashville Rail Terminal,3086 Sidco Dr,,37204,Nashville,TN,US
+307,USJKV_FEC,FEC Railway Jacksonville,6140 Philips Hwy,,32216,Jacksonville,FL,US
+308,30000100,AdvanceTec Industries,1150 NW 163rd Dr,,33169,Miami,FL,US
+309,30000101,Nissan North America,1 Nissan Way,,37067,Franklin,TN,US
+310,30000102,Diversified Maintenance,5110 Sunforest Dr #250,,33634,Tampa,FL,US
+311,30000103,Bloomin Brands,2202 N Westshore Blvd STE 500,,33607,Tampa,FL,US
+312,30000104,University of South Florida,4202 E Fowler Ave,,33620,Tampa,FL,US
+313,30000105,Entergy,639 Loyola Ave,,70113,New Orleans,LA,US
+314,30000106,Office Depot,2690 Coral Way,,33145,Miami,FL,US
+315,30000107,Lennar Corporation,700 NW 107th Ave,,33172,Miami,FL,US
+316,30000108,Royal Caribbean,1050 Caribbean Way,,33132,Miami,FL,US
+317,30000109,Intel Corp.,2200 Mission College Blvd.,,95054,Santa Clara,CA,US
+318,30000110,Pirelli Tire North America LLC,100 Pirelli Dr,,30161,Rome,GA,US
+319,30000111,Caterpillar,406 U.S. 49 Frontage Rd,,39218,Richland,MS,US
+320,30000112,Ikea US Sunrise Florida,151 NW 136th Ave,,33325,Sunrise,FL,US
+321,30000113,3M Brownwood Plant,4501 Highway 377,,76804,Brownwood,TX,US

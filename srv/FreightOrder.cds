@@ -6,7 +6,12 @@ annotate srv.FreightOrders with {
   carrier @( Common.Label: 'Carrier' );
 }
 
-annotate CatalogService.FreightOrders with @(
+// annotate srv.Locations with {
+//   loc_code @( Common: { Label: 'Location'} );
+//   street @( Common.Label: 'Street' );
+// }
+
+annotate srv.FreightOrders with @(
     //Freight Order List
     UI : {
         
@@ -52,7 +57,7 @@ annotate CatalogService.FreightOrders with @(
             {
                 $Type : 'UI.DataField',
                 Label : 'Source Location',
-                Value : source_loc 
+                Value : source_loc.loc_code
             },
             {
                 $Type : 'UI.DataField',
@@ -62,7 +67,7 @@ annotate CatalogService.FreightOrders with @(
             {
                 $Type : 'UI.DataField',
                 Label : 'Destination Location',
-                Value : dest_loc
+                Value : dest_loc.loc_code
             },
             {
                 $Type : 'UI.DataField',
@@ -72,6 +77,7 @@ annotate CatalogService.FreightOrders with @(
         ]
 
     },
+
     // Freight Order Page
     UI: {
         HeaderInfo              : {
@@ -120,21 +126,21 @@ annotate CatalogService.FreightOrders with @(
         },
         FieldGroup #Details            : {Data : [
            
-            {
-                $Type : 'UI.DataField',
-                Label : 'Source Location',
-                Value : source_loc 
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Label : 'Source Location',
+            //     Value : source_loc.loc_code
+            // },
             {
                 $Type : 'UI.DataField',
                 Label: 'Departure Date',
                 Value : departure
             },
-            {
-                $Type : 'UI.DataField',
-                Label : 'Destination Location',
-                Value : dest_loc
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Label : 'Destination Location',
+            //     Value : dest_loc.loc_code
+            // },
             {
                 $Type : 'UI.DataField',
                 Label : 'Arrival Date',
@@ -155,10 +161,10 @@ annotate CatalogService.FreightOrders with @(
             }]
         },
         // Line items
-        {
-            $Type  : 'UI.ReferenceFacet',
-            Label  : 'Freight Order Items',
-            Target : 'items/@UI.LineItem'
-        }
+        // {
+        //     $Type  : 'UI.ReferenceFacet',
+        //     Label  : 'Freight Order Items',
+        //     Target : 'items/@UI.LineItem'
+        // }
     ]
 );

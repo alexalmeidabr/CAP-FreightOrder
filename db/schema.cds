@@ -3,8 +3,8 @@ using { Currency } from '@sap/cds/common';
 
 entity FreightOrders {
     
-    key doc_number  : String;
-    source_loc      : Association to Locations;
+    key ID          : Integer;
+    doc_number      : String;    
     fo_type         : String;
     fo_type_descr   : String;
     subcontr_rel    : Boolean;
@@ -30,16 +30,32 @@ entity FreightOrders {
     pe_org_descr    : String;
     purch_org       : Integer;
     purch_org_descr : String;
+    source_loc      : Association to Locations;
     departure       : DateTime;
-    dest_loc        : String;
+    dest_loc        : Association to Locations;
     arrival         : String;
     items           : Composition of many FreightOrderItems on items.parent = $self;
 }
 
+entity Locations {
+
+    key ID       : Integer;
+    loc_code     : String;
+    loc_descr    : String;
+    street       : String;
+    number       : String;
+    post_code    : String;
+    city         : String;
+    region       : String;
+    country      : String;
+
+}
+
 entity FreightOrderItems {
     
-    key parent      : Association to FreightOrders;
-    key item_number : Integer;    
+    key ID        : Integer;
+    parent        : Association to FreightOrders;
+    item_number   : Integer;    
     parent_item   : Integer; 
     type          : String;
     descr         : String;
@@ -52,26 +68,16 @@ entity FreightOrderItems {
     volume_UOM    : String;
     dg_ind        : Boolean;
     shipper       : String;
-    shipperto_party     : String;    
+    shipperto     : String;    
     
 }
 
-entity Locations {
 
-    key loc_code : String;
-    loc_descr    : String;
-    street       : String;
-    number       : String;
-    post_code    : String;
-    city         : String;
-    region       : String;
-    country      : String;
-
-}
 
 entity BusinessPartners {
   
-  key bp_number   : String;
+  key ID      : Integer;
+  bp_number   : String;
   name        : String;
   street      : String;
   number      : String;
