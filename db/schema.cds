@@ -11,7 +11,7 @@ entity FreightOrders {
     transp_mode     : String;
     means_transp    : String;
     exec_status     : String;
-    carrier         : String;
+    carrier         : Association to BusinessPartners;
     carrier_ref     : String;
     driver          : String;
     driver_name     : String;
@@ -33,7 +33,7 @@ entity FreightOrders {
     source_loc      : Association to Locations;
     departure       : DateTime;
     dest_loc        : Association to Locations;
-    arrival         : String;
+    arrival         : DateTime;
     items           : Composition of many FreightOrderItems on items.parent = $self;
 }
 
@@ -67,8 +67,8 @@ entity FreightOrderItems {
     volume        : Decimal;
     volume_UOM    : String;
     dg_ind        : Boolean;
-    shipper       : String;
-    shipperto     : String;    
+    shipper       : Association to BusinessPartners;
+    shipperto     : Association to BusinessPartners;    
     
 }
 

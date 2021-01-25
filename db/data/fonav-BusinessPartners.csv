@@ -13,3 +13,7 @@ ID,BP_number,Name,Street,Number,postal_code,City,Region,Country,Email,Phone,Webs
 412,30000111,Caterpillar,406 U.S. 49 Frontage Rd,,39218,Richland,MS,US,shipping@caterpilar.com,706-368-6687,https://caterpilar.com
 413,30000112,Ikea US Sunrise Florida,151 NW 136th Ave,,33325,Sunrise,FL,US,info@ikea.com,888-888-4532,https://ikea.com
 414,30000113,3M Brownwood Plant,4501 Highway 377,,76804,Brownwood,TX,US,log.texas@3m.com,325-646-3551,https://3m.com
+415,30000001,"Inland Transport, Inc.",3210 Friendly Ave,,32808,Orlando,FL,US,inlandtrlog@inlandtr.com,407-858-3039,https://www.shipinland.com/
+416,30000002,"CCC Transportation, LLC",509 US-92,,33823,Auburndale,FL,US,contact@comcar.com,863-967-1100,https://comcar.com/
+417,30000003,Eagle Transport Corporation,6215 Hartford St,,33619,Tampa,FL,US,logcontact@eagletr.com,833-463-7627,https://www.eagletransportcorp.com/
+418,30000004,Total Truck Transport,1700 35th St,,32839,Orlando,FL,US,Info@TotalTruckTransport.com,321-231-7833,http://totaltrucktransport.com/

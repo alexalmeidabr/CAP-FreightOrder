@@ -1,9 +1,9 @@
-ID,doc_number,fo_type,fo_type_descr,subcontr_rel,transp_mode,means_transp,exec_status,carrier,carrier_ref,driver,driver_name,cost,currency,vehicle,vehicle_descr,reg_number,weight_cap,weight_cap_uom,volume_cap,volume_cap_uom,used_weight,used_volume,pe_org,pe_org_descr,purch_org,purch_org_descr,source_loc_ID,departure,dest_loc_ID,arrival
-101,10001001,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,30000001,M20120015,,,521.32,USD,,,,,,,,,,,,100001,South US Purchase Unit,301,2021-02-01T10:00:00Z,308,2021-02-01T16:00:00Z
-102,10001002,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,30000001,M20120098,,,400.33,USD,,,,,,,,,,,,100001,South US Purchase Unit,302,2021-01-18T10:00:00Z,309,2021-01-18T11:15:00Z
-103,10001003,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,30000002,R12205213-8,,,189,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-22T08:00:00Z,310,2021-01-22T11:10:00Z
-104,10001004,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,30000003,BCUS5001202001,,,233.87,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-30T16:45:00Z,311,2021-01-30T17:55:00Z
-105,10001005,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,30000003,BCUS5859202001,,,598,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-24T15:00:00Z,312,2021-01-24T17:20:00Z
+ID,doc_number,fo_type,fo_type_descr,subcontr_rel,transp_mode,means_transp,exec_status,carrier_ID,carrier_ref,driver,driver_name,cost,currency,vehicle,vehicle_descr,reg_number,weight_cap,weight_cap_uom,volume_cap,volume_cap_uom,used_weight,used_volume,pe_org,pe_org_descr,purch_org,purch_org_descr,source_loc_ID,departure,dest_loc_ID,arrival
+101,10001001,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,415,M20120015,,,521.32,USD,,,,,,,,,,,,100001,South US Purchase Unit,301,2021-02-01T10:00:00Z,308,2021-02-01T16:00:00Z
+102,10001002,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,415,M20120098,,,400.33,USD,,,,,,,,,,,,100001,South US Purchase Unit,302,2021-01-18T10:00:00Z,309,2021-01-18T11:15:00Z
+103,10001003,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,416,R12205213-8,,,189,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-22T08:00:00Z,310,2021-01-22T11:10:00Z
+104,10001004,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,417,BCUS5001202001,,,233.87,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-30T16:45:00Z,311,2021-01-30T17:55:00Z
+105,10001005,FORS,Road Subcontracting,TRUE,Road,Truck Subcontract,Not Started,417,BCUS5859202001,,,598,USD,,,,,,,,,,,,100001,South US Purchase Unit,303,2021-01-24T15:00:00Z,312,2021-01-24T17:20:00Z
 106,10001006,FFTL,FTL Shipment,FALSE,Road,Road FTL,Not Started,,,70000001,Robert Garcia,,,TRUCK_40F_001,Truck 40F 6TRJ249,6TRJ249,20000,KG,67.7,M3,5830,20,1000000,South US P&E,,,301,2021-01-22T10:20:00Z,315,2021-01-22T14:45:00Z
 107,10001007,FFTL,FTL Shipment,FALSE,Road,Road FTL,Not Started,,,70000002,Juan Neto,,,TRUCK_20F_001,Truck 20F 6TRJ250,6TRJ250,10000,KG,33.2,M3,2765,33,1000000,South US P&E,,,301,2021-01-29T09:00:00Z,314,2021-01-29T19:40:00Z
 108,10001008,FFTL,FTL Shipment,FALSE,Road,Road FTL,Not Started,,,70000001,Robert Garcia,,,TRUCK_20F_001,Truck 20F 6TRJ250,6TRJ250,10000,KG,33.2,M3,2465,17,1000000,South US P&E,,,301,2021-02-02T10:15:00Z,308,2021-02-02T12:45:00Z
@@ -17,9 +17,9 @@ ID,doc_number,fo_type,fo_type_descr,subcontr_rel,transp_mode,means_transp,exec_s
 116,10001016,FLTL,LTL Shipment,FALSE,Road,Road LTL,Not Started,,,,,,,,,,,,,,,,1000000,South US P&E,,,301,2021-03-01T09:45:00Z,308,2021-03-01T12:05:00Z
 117,10001017,FLTL,LTL Shipment,FALSE,Road,Road LTL,Not Started,,,,,,,,,,,,,,,,1000000,South US P&E,,,301,2021-03-05T11:50:00Z,316,2021-03-05T17:30:00Z
 118,10001018,FFTL,FTL Shipment,FALSE,Road,Road FTL,Not Started,,,,,,,,,,,,,,,,1000000,South US P&E,,,301,2021-03-12T14:00:00Z,308,2021-03-12T16:15:00Z
-119,10001019,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,30000004,RA20125-880051,,,135.88,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-01-15T14:00:00Z,306,2021-01-15T16:00:00Z
-120,10001020,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,30000004,RA20358-880142,,,201.32,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-02-01T07:15:00Z,307,2021-02-01T09:05:00Z
-121,10001021,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,30000004,RA20175-882546,,,115.98,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-03-10T11:10:00Z,305,2021-03-10T12:00:00Z
+119,10001019,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,418,RA20125-880051,,,135.88,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-01-15T14:00:00Z,306,2021-01-15T16:00:00Z
+120,10001020,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,418,RA20358-880142,,,201.32,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-02-01T07:15:00Z,307,2021-02-01T09:05:00Z
+121,10001021,FORA,Rail Subcontracting,TRUE,Rail,Rail,Not Started,418,RA20175-882546,,,115.98,USD,,,,,,,,,,,,100001,South US Purchase Unit,304,2021-03-10T11:10:00Z,305,2021-03-10T12:00:00Z
 122,10001022,FORS,Road Subcontracting,TRUE,Road,Truck,Not Started,,,,,,,,,,,,,,,,,,,,301,2021-03-02T08:15:00Z,308,2021-03-02T08:55:00Z
 123,10001023,FORS,Road Subcontracting,TRUE,Road,Truck,Not Started,,,,,,,,,,,,,,,,,,,,303,2021-02-15T13:00:00Z,311,2021-02-15T14:15:00Z
 124,10001024,FORS,Road Subcontracting,TRUE,Road,Truck,Not Started,,,,,,,,,,,,,,,,,,,,302,2021-02-25T14:50:00Z,309,2021-02-25T15:55:00Z
