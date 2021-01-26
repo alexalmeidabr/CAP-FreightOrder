@@ -78,7 +78,8 @@ annotate srv.FreightOrders with @(
         HeaderInfo              : {
             TypeName       : 'Freight Order',
             TypeNamePlural : 'Freight Orders',
-            Title: { Value: doc_number }
+            Description    : {Value: fo_type_descr},
+            Title: { Value: doc_number },            
         },
         HeaderFacets                   : [
             {
@@ -95,10 +96,6 @@ annotate srv.FreightOrders with @(
 
         FieldGroup #Description        : {
             Data : [
-                {
-                    $Type : 'UI.DataField',                
-                    Value : fo_type_descr
-                },
                 {
                     $Type : 'UI.DataField',
                     Value : exec_status

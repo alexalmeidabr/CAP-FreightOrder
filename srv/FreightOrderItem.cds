@@ -57,7 +57,8 @@ annotate srv.FreightOrderItems with @(
         HeaderInfo:{
             TypeName : 'Freight Order Item',
             TypeNamePlural : 'Freight Order Items',
-            Title    : { Value: item_number}
+            Title    : { Value: item_number},
+            Description    : {Value: descr},
         },
         HeaderFacets :[
             {
@@ -68,12 +69,7 @@ annotate srv.FreightOrderItems with @(
 
         FieldGroup #ItemDescription        : {
             Data : [
-                {$Type : 'UI.DataField', Value : resource_type},
-                {
-                    $Type : 'UI.DataField',
-                    Label : 'Description',
-                    Value : descr
-                },
+                {$Type : 'UI.DataField', Value : resource_type},        
                 {
                     $Type : 'UI.DataField',
                     Label : 'Quantity',
@@ -85,6 +81,7 @@ annotate srv.FreightOrderItems with @(
         FieldGroup #Shipper        : {
             Data : [
                 { $Type : 'UI.DataField', Value : shipper.bp_number },
+                {$Type: 'UI.DataField', Value: shipper.name},
                 {$Type: 'UI.DataField', Value: shipper.street, Label: 'Street'},
                 {$Type: 'UI.DataField', Value: shipper.postal_code, Label: 'Zip code'},
                 {$Type: 'UI.DataField', Value: shipper.city, Label: 'City'},
@@ -99,6 +96,7 @@ annotate srv.FreightOrderItems with @(
         FieldGroup #ShipperTo        : {
             Data : [
                 { $Type : 'UI.DataField', Value : shipperto.bp_number },
+                {$Type: 'UI.DataField', Value: shipperto.name},
                 {$Type: 'UI.DataField', Value: shipperto.street, Label: 'Street'},
                 {$Type: 'UI.DataField', Value: shipperto.postal_code, Label: 'Zip code'},
                 {$Type: 'UI.DataField', Value: shipperto.city, Label: 'City'},
