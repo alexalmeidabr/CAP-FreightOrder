@@ -1,6 +1,6 @@
 # CAP - Freight Order
 
-This is a personal experiment project to test CAP capabilities using Fiori UI anotations.
+This is a personal experimental project to test CAP capabilities using Fiori UI anotations.
 
 It uses a simulated SAP TM Freight Order as data.
 
