@@ -7,43 +7,43 @@ annotate srv.FreightOrderItems with @(
         LineItem            : [
             {
                 $Type             : 'UI.DataField',
-                Label             : 'Item',
+                Label             : '{i18n>Item}',
                 Value             : item_number,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'Quantity',
+                Label             : '{i18n>Quantity}',
                 Value             : quantity,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'Description',
+                Label             : '{i18n>Description}',
                 Value             : descr,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'Weight',
+                Label             : '{i18n>Weight}',
                 Value             : weight,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'UOM',
+                Label             : '{i18n>UOM}',
                 Value             : weight_UOM,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'Volume',
+                Label             : '{i18n>Volume}',
                 Value             : volume,
                 ![@UI.Importance] : #High
             },
             {
                 $Type             : 'UI.DataField',
-                Label             : 'UOM',
+                Label             : '{i18n>UOM}',
                 Value             : volume_UOM,
                 ![@UI.Importance] : #High
             }
@@ -55,8 +55,8 @@ annotate srv.FreightOrderItems with @(
     UI:{
 
         HeaderInfo:{
-            TypeName : 'Freight Order Item',
-            TypeNamePlural : 'Freight Order Items',
+            TypeName : '{i18n>FreightOrderItem}',
+            TypeNamePlural : '{i18n>FreightOrderItems}',
             Title    : { Value: item_number},
             Description    : {Value: descr},
         },
@@ -72,7 +72,7 @@ annotate srv.FreightOrderItems with @(
                 {$Type : 'UI.DataField', Value : resource_type},        
                 {
                     $Type : 'UI.DataField',
-                    Label : 'Quantity',
+                    Label : '{i18n>Quantity}',
                     Value : quantity
                 },
 
@@ -82,14 +82,14 @@ annotate srv.FreightOrderItems with @(
             Data : [
                 { $Type : 'UI.DataField', Value : shipper.bp_number },
                 {$Type: 'UI.DataField', Value: shipper.name},
-                {$Type: 'UI.DataField', Value: shipper.street, Label: 'Street'},
-                {$Type: 'UI.DataField', Value: shipper.postal_code, Label: 'Zip code'},
-                {$Type: 'UI.DataField', Value: shipper.city, Label: 'City'},
-                {$Type: 'UI.DataField', Value: shipper.region, Label: 'State'},
-                {$Type: 'UI.DataField', Value: shipper.country, Label: 'Country'},
-                {$Type: 'UI.DataField', Value: shipper.email, Label: 'email'},
-                {$Type: 'UI.DataField', Value: shipper.phone, Label: 'phone'},
-                {$Type: 'UI.DataField', Value: shipper.website, Label: 'website'},
+                {$Type: 'UI.DataField', Value: shipper.street, Label: '{i18n>Street}'},
+                {$Type: 'UI.DataField', Value: shipper.postal_code, Label: '{i18n>PostalCode}'},
+                {$Type: 'UI.DataField', Value: shipper.city, Label: '{i18n>City}'},
+                {$Type: 'UI.DataField', Value: shipper.region, Label: '{i18n>Region}'},
+                {$Type: 'UI.DataField', Value: shipper.country, Label: '{i18n>Country}'},
+                {$Type: 'UI.DataField', Value: shipper.email, Label: '{i18n>Email}'},
+                {$Type: 'UI.DataField', Value: shipper.phone, Label: '{i18n>Phone}'},
+                {$Type: 'UI.DataField', Value: shipper.website, Label: '{i18n>Website}'},
             ]
         },
 
@@ -97,25 +97,25 @@ annotate srv.FreightOrderItems with @(
             Data : [
                 { $Type : 'UI.DataField', Value : shipperto.bp_number },
                 {$Type: 'UI.DataField', Value: shipperto.name},
-                {$Type: 'UI.DataField', Value: shipperto.street, Label: 'Street'},
-                {$Type: 'UI.DataField', Value: shipperto.postal_code, Label: 'Zip code'},
-                {$Type: 'UI.DataField', Value: shipperto.city, Label: 'City'},
-                {$Type: 'UI.DataField', Value: shipperto.region, Label: 'State'},
-                {$Type: 'UI.DataField', Value: shipperto.country, Label: 'Country'},
-                {$Type: 'UI.DataField', Value: shipperto.email, Label: 'email'},
-                {$Type: 'UI.DataField', Value: shipperto.phone, Label: 'phone'},
-                {$Type: 'UI.DataField', Value: shipperto.website, Label: 'website'},
+                {$Type: 'UI.DataField', Value: shipperto.street, Label: '{i18n>Street}'},
+                {$Type: 'UI.DataField', Value: shipperto.postal_code, Label: '{i18n>PostalCode}'},
+                {$Type: 'UI.DataField', Value: shipperto.city, Label: '{i18n>City}'},
+                {$Type: 'UI.DataField', Value: shipperto.region, Label: '{i18n>Region}'},
+                {$Type: 'UI.DataField', Value: shipperto.country, Label: '{i18n>Country}'},
+                {$Type: 'UI.DataField', Value: shipperto.email, Label: '{i18n>Email}'},
+                {$Type: 'UI.DataField', Value: shipperto.phone, Label: '{i18n>Phone}'},
+                {$Type: 'UI.DataField', Value: shipperto.website, Label: '{i18n>Website}'},
             ]
         },
         FieldGroup #Cargo        : {
             Data : [
-                {$Type : 'UI.DataField', Value : descr, Label: 'Description' },
-                {$Type : 'UI.DataField', Value : quantity, Label: 'Quantity' },
-                {$Type: 'UI.DataField', Value: weight, Label: 'Weight'},
+                {$Type : 'UI.DataField', Value : descr, Label: '{i18n>Description}' },
+                {$Type : 'UI.DataField', Value : quantity, Label: '{i18n>Quantity}' },
+                {$Type: 'UI.DataField', Value: weight, Label: '{i18n>Weight}'},
                 {$Type: 'UI.DataField', Value: weight_UOM},
-                {$Type: 'UI.DataField', Value: volume, Label: 'Volume'},
+                {$Type: 'UI.DataField', Value: volume, Label: '{i18n>Volume}'},
                 {$Type: 'UI.DataField', Value: volume_UOM},
-                {$Type: 'UI.DataField', Value: dg_ind, Label: 'Dangerous Good Indicator'},
+                {$Type: 'UI.DataField', Value: dg_ind, Label: '{i18n>DangerousGoods}'},
                 
             ]
         },
@@ -126,16 +126,16 @@ annotate srv.FreightOrderItems with @(
         {
             $Type  : 'UI.CollectionFacet',
             ID     : 'FOItemDetails',   
-            Label  : 'Item Details',                    
+            Label  : '{i18n>ItemDetails}',                    
             Facets : [
                 {
                     $Type  : 'UI.ReferenceFacet',                  
-                    Label  :  'Shipper',              
+                    Label  :  '{i18n>Shipper}',              
                     Target : '@UI.FieldGroup#Shipper'
                 },
                 {
                     $Type  : 'UI.ReferenceFacet',                  
-                    Label  :  'Shipper To',              
+                    Label  :  '{i18n>ShipperTo}',              
                     Target : '@UI.FieldGroup#ShipperTo'
                 },
                 
@@ -143,7 +143,7 @@ annotate srv.FreightOrderItems with @(
         },
         {
             $Type  : 'UI.ReferenceFacet',                  
-            Label  :  'Cargo Details',              
+            Label  :  '{i18n>CargoDetails}',              
             Target : '@UI.FieldGroup#Cargo'
         },
     ]

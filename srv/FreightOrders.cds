@@ -3,9 +3,8 @@ using CatalogService.FreightOrderItems as items from './FreightOrderItem';
 
 // Define Filter Labels
 annotate srv.FreightOrders with {
-  fo_type @( Common: { Label: 'Order Type'} );
-  carrier @( Common.Label: 'Carrier' );
-  }
+  fo_type @( Common: { Label: '{i18n>OrderType}'} );
+}
 
 annotate srv.FreightOrders with @(
     //Freight Order List
@@ -19,54 +18,54 @@ annotate srv.FreightOrders with @(
         LineItem                : [
             {
                 $Type : 'UI.DataField',
-                Label : 'Order Number',
+                Label : '{i18n>OrderNumber}',
                 Value : doc_number,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Order Type',
+                Label : '{i18n>OrderType}',
                 Value : fo_type,                
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Order Type Description',
+                Label : '{i18n>OrderTypeDescr}',
                 Value : fo_type_descr,                
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Execution Status',
+                Label : '{i18n>ExecutionStatus}',
                 Value : exec_status,                
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Mode of Transport',
+                Label : '{i18n>ModeTransport}',
                 Value : transp_mode,
                 
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Carrier',
+                Label : '{i18n>Carrier}',
                 Value : carrier.bp_number,
                 
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Source Location',
+                Label : '{i18n>Source}',
                 Value : source_loc.loc_code
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Departure Date',
+                Label : '{i18n>Departure}',
                 Value : departure
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Destination Location',
+                Label : '{i18n>Destination}',
                 Value : dest_loc.loc_code
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'Arrival Date',
+                Label : '{i18n>Arrival}',
                 Value : arrival
             }
         ]
@@ -76,8 +75,8 @@ annotate srv.FreightOrders with @(
     // Freight Order Page
     UI: {
         HeaderInfo              : {
-            TypeName       : 'Freight Order',
-            TypeNamePlural : 'Freight Orders',
+            TypeName       : '{i18n>FreightOrder}',
+            TypeNamePlural : '{i18n>FreightOrders}',
             Description    : {Value: fo_type_descr},
             Title: { Value: doc_number },            
         },
@@ -106,12 +105,12 @@ annotate srv.FreightOrders with @(
             Data : [
                 {
                     $Type : 'UI.DataField',
-                    Label: 'Price',
+                    Label: '{i18n>Price}',
                     Value : cost
                 },
                 {
                     $Type : 'UI.DataField',
-                    Label: 'Currency',
+                    Label: '{i18n>Currency}',
                     Value : currency
                 }
             ]
@@ -119,23 +118,23 @@ annotate srv.FreightOrders with @(
         FieldGroup #Source:
         {
             Data:[
-                {$Type: 'UI.DataField', Value: source_loc.loc_code, Label: 'Code'},
-                {$Type: 'UI.DataField', Value: source_loc.street, Label: 'Street'},
-                {$Type: 'UI.DataField', Value: source_loc.post_code, Label: 'Zip code'},
-                {$Type: 'UI.DataField', Value: source_loc.city, Label: 'City'},
-                {$Type: 'UI.DataField', Value: source_loc.region, Label: 'State'},
-                {$Type: 'UI.DataField', Value: source_loc.country, Label: 'Country'},
+                {$Type: 'UI.DataField', Value: source_loc.loc_code, Label: '{i18n>LocationCode}'},
+                {$Type: 'UI.DataField', Value: source_loc.street, Label: '{i18n>Street}'},
+                {$Type: 'UI.DataField', Value: source_loc.post_code, Label: '{i18n>PostalCode}'},
+                {$Type: 'UI.DataField', Value: source_loc.city, Label: '{i18n>City}'},
+                {$Type: 'UI.DataField', Value: source_loc.region, Label: '{i18n>Region}'},
+                {$Type: 'UI.DataField', Value: source_loc.country, Label: '{i18n>Country}'},
             ]
         },
         FieldGroup #Destination:
         {
             Data:[
-                {$Type: 'UI.DataField', Value: dest_loc.loc_code, Label: 'Code'},
-                {$Type: 'UI.DataField', Value: dest_loc.street, Label: 'Street'},
-                {$Type: 'UI.DataField', Value: dest_loc.post_code, Label: 'Zip code'},
-                {$Type: 'UI.DataField', Value: dest_loc.city, Label: 'City'},
-                {$Type: 'UI.DataField', Value: dest_loc.region, Label: 'State'},
-                {$Type: 'UI.DataField', Value: dest_loc.country, Label: 'Country'},                
+                {$Type: 'UI.DataField', Value: dest_loc.loc_code, Label: '{i18n>LocationCode}'},
+                {$Type: 'UI.DataField', Value: dest_loc.street, Label: '{i18n>Street}'},
+                {$Type: 'UI.DataField', Value: dest_loc.post_code, Label: '{i18n>PostalCode}'},
+                {$Type: 'UI.DataField', Value: dest_loc.city, Label: '{i18n>City}'},
+                {$Type: 'UI.DataField', Value: dest_loc.region, Label: '{i18n>Region}'},
+                {$Type: 'UI.DataField', Value: dest_loc.country, Label: '{i18n>Country}'},                
             ]
         },
         FieldGroup #Carrier:
@@ -143,26 +142,26 @@ annotate srv.FreightOrders with @(
             Data:[
                 {$Type: 'UI.DataField', Value: carrier.bp_number},
                 {$Type: 'UI.DataField', Value: carrier.name},
-                {$Type: 'UI.DataField', Value: carrier.city, Label: 'City'},
-                {$Type: 'UI.DataField', Value: carrier.email, Label: 'Email'},
-                {$Type: 'UI.DataField', Value: carrier.phone, Label: 'Phone'},
-                {$Type: 'UI.DataField', Value: carrier.website, Label: 'Website'},                
+                {$Type: 'UI.DataField', Value: carrier.city, Label: '{i18n>City}'},
+                {$Type: 'UI.DataField', Value: carrier.email, Label: '{i18n>Email}'},
+                {$Type: 'UI.DataField', Value: carrier.phone, Label: '{i18n>Phone}'},
+                {$Type: 'UI.DataField', Value: carrier.website, Label: '{i18n>Website}'},                
             ]
         },
         FieldGroup #Dates:
         {
             Data:[                
-                {$Type: 'UI.DataField', Value: departure, Label: 'Departure'},
-                {$Type: 'UI.DataField', Value: arrival, Label: 'Arrival'},                
+                {$Type: 'UI.DataField', Value: departure, Label: '{i18n>Departure}'},
+                {$Type: 'UI.DataField', Value: arrival, Label: '{i18n>Arrival}'},                
             ]
         },
         FieldGroup #CargoInfo:
         {
             Data:[
-                {$Type: 'UI.DataField', Value: used_weight, Label: 'Weight'},
-                {$Type: 'UI.DataField', Value: weight_cap_uom, Label: 'UOM'},
-                {$Type: 'UI.DataField', Value: used_volume, Label: 'Volume'},
-                {$Type: 'UI.DataField', Value: volume_cap_uom, Label: 'UOM'},  
+                {$Type: 'UI.DataField', Value: used_weight, Label: '{i18n>Weight}'},
+                {$Type: 'UI.DataField', Value: weight_cap_uom, Label: '{i18n>UOM}'},
+                {$Type: 'UI.DataField', Value: used_volume, Label: '{i18n>Volume}'},
+                {$Type: 'UI.DataField', Value: volume_cap_uom, Label: '{i18n>UOM}'},  
             ]               
         },
     },
@@ -173,26 +172,26 @@ annotate srv.FreightOrders with @(
         {
             $Type  : 'UI.CollectionFacet',
             ID     : 'FODetails',
-            Label  : 'Details',            
+            Label  : '{i18n>Details}',            
             Facets : [
                 {
                     $Type  : 'UI.ReferenceFacet',                  
-                    Label  :  'Carrier',              
+                    Label  :  '{i18n>Carrier}',              
                     Target : '@UI.FieldGroup#Carrier'
                 },
                 {
                     $Type  : 'UI.ReferenceFacet',                  
-                    Label  :  'Source Location',              
+                    Label  :  '{i18n>Source}',              
                     Target : '@UI.FieldGroup#Source'
                 },
                 {
                     $Type  : 'UI.ReferenceFacet',  
-                    Label  :  'Destination Location',              
+                    Label  :  '{i18n>Destination}',              
                     Target : '@UI.FieldGroup#Destination'
                 },
                 {
                     $Type  : 'UI.ReferenceFacet',  
-                    Label  :  'Cargo Info',              
+                    Label  :  '{i18n>CargoInfo}',              
                     Target : '@UI.FieldGroup#CargoInfo'
                 },
             ]
@@ -200,14 +199,14 @@ annotate srv.FreightOrders with @(
                     
         {
             $Type  : 'UI.ReferenceFacet',                  
-            Label  :  'Dates',              
+            Label  :  '{i18n>Dates}',              
             Target : '@UI.FieldGroup#Dates'
         },     
                       
         //Line items
         {
             $Type  : 'UI.ReferenceFacet',
-            Label  : 'Items',
+            Label  : '{i18n>Items}',
             Target : 'items/@UI.LineItem'
         }
     ]
