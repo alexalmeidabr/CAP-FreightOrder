@@ -1,25 +1,27 @@
-# Getting Started
+# CAP - Freight Order
 
-Welcome to your new project.
+This is a personal experiment project to test CAP capabilities using Fiori UI anotations.
 
-It contains these folders and files, following our recommended project layout:
+It uses a simulated SAP TM Freight Order as data.
 
-File or Folder | Purpose
+The data is stored in csv files at folder db/data.
+
+File / Folder | Purpose
 ---------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
+`app/` | Future UI5 App - not yet implemented
+`db/data` | csv files containing the SAP TM Freight Order data
+`srv/` | Service model and annotations
 `package.json` | project metadata and configuration
-`readme.md` | this getting started guide
 
 
-## Next Steps
+## Next Steps...
 
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+You can use a SAP Cloud trial account to run it as the project is configured to use a HANA Database. You can also use SQlite by changing the `package.json` file.
+
+- Open a new terminal and run  `cds deploy --to hana`
+- Run `cds watch`
 
 
-## Learn More
+## Learn more...
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+Learn more at https://cap.cloud.sap/docs/get-started/
