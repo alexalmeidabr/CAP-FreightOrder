@@ -1,0 +1,738 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+</edmx:Reference>
+<edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+</edmx:Reference>
+<edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+</edmx:Reference>
+<edmx:DataServices m:DataServiceVersion="2.0">
+<Schema Namespace="CatalogService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+<EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+<EntitySet Name="BusinessPartners" EntityType="CatalogService.BusinessPartners"/>
+<EntitySet Name="FreightOrderItems" EntityType="CatalogService.FreightOrderItems"/>
+<EntitySet Name="FreightOrders" EntityType="CatalogService.FreightOrders"/>
+<EntitySet Name="Locations" EntityType="CatalogService.Locations"/>
+<AssociationSet Name="FreightOrderItems_parent" Association="CatalogService.FreightOrderItems_parent">
+<End Role="FreightOrderItems" EntitySet="FreightOrderItems"/>
+<End Role="FreightOrders" EntitySet="FreightOrders"/>
+</AssociationSet>
+<AssociationSet Name="FreightOrderItems_shipper" Association="CatalogService.FreightOrderItems_shipper">
+<End Role="FreightOrderItems" EntitySet="FreightOrderItems"/>
+<End Role="BusinessPartners" EntitySet="BusinessPartners"/>
+</AssociationSet>
+<AssociationSet Name="FreightOrderItems_shipperto" Association="CatalogService.FreightOrderItems_shipperto">
+<End Role="FreightOrderItems" EntitySet="FreightOrderItems"/>
+<End Role="BusinessPartners" EntitySet="BusinessPartners"/>
+</AssociationSet>
+<AssociationSet Name="FreightOrders_carrier" Association="CatalogService.FreightOrders_carrier">
+<End Role="FreightOrders" EntitySet="FreightOrders"/>
+<End Role="BusinessPartners" EntitySet="BusinessPartners"/>
+</AssociationSet>
+<AssociationSet Name="FreightOrders_source_loc" Association="CatalogService.FreightOrders_source_loc">
+<End Role="FreightOrders" EntitySet="FreightOrders"/>
+<End Role="Locations" EntitySet="Locations"/>
+</AssociationSet>
+<AssociationSet Name="FreightOrders_dest_loc" Association="CatalogService.FreightOrders_dest_loc">
+<End Role="FreightOrders" EntitySet="FreightOrders"/>
+<End Role="Locations" EntitySet="Locations"/>
+</AssociationSet>
+</EntityContainer>
+<EntityType Name="BusinessPartners">
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+<Property Name="bp_number" Type="Edm.String"/>
+<Property Name="name" Type="Edm.String"/>
+<Property Name="street" Type="Edm.String"/>
+<Property Name="number" Type="Edm.String"/>
+<Property Name="postal_code" Type="Edm.String"/>
+<Property Name="city" Type="Edm.String"/>
+<Property Name="region" Type="Edm.String"/>
+<Property Name="country" Type="Edm.String"/>
+<Property Name="email" Type="Edm.String"/>
+<Property Name="phone" Type="Edm.String"/>
+<Property Name="website" Type="Edm.String"/>
+</EntityType>
+<EntityType Name="FreightOrderItems">
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+<NavigationProperty Name="parent" Relationship="CatalogService.FreightOrderItems_parent" FromRole="FreightOrderItems" ToRole="FreightOrders"/>
+<Property Name="item_number" Type="Edm.Int32"/>
+<Property Name="parent_item" Type="Edm.Int32"/>
+<Property Name="type" Type="Edm.String"/>
+<Property Name="descr" Type="Edm.String"/>
+<Property Name="resource_type" Type="Edm.String"/>
+<Property Name="container" Type="Edm.String"/>
+<Property Name="quantity" Type="Edm.Int32"/>
+<Property Name="weight" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="weight_UOM" Type="Edm.String"/>
+<Property Name="volume" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="volume_UOM" Type="Edm.String"/>
+<Property Name="dg_ind" Type="Edm.Boolean"/>
+<NavigationProperty Name="shipper" Relationship="CatalogService.FreightOrderItems_shipper" FromRole="FreightOrderItems" ToRole="BusinessPartners"/>
+<NavigationProperty Name="shipperto" Relationship="CatalogService.FreightOrderItems_shipperto" FromRole="FreightOrderItems" ToRole="BusinessPartners"/>
+<Property Name="parent_ID" Type="Edm.Int32"/>
+<Property Name="shipper_ID" Type="Edm.Int32"/>
+<Property Name="shipperto_ID" Type="Edm.Int32"/>
+</EntityType>
+<EntityType Name="FreightOrders">
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+<Property Name="doc_number" Type="Edm.String"/>
+<Property Name="fo_type" Type="Edm.String"/>
+<Property Name="fo_type_descr" Type="Edm.String"/>
+<Property Name="subcontr_rel" Type="Edm.Boolean"/>
+<Property Name="transp_mode" Type="Edm.String"/>
+<Property Name="means_transp" Type="Edm.String"/>
+<Property Name="exec_status" Type="Edm.String"/>
+<NavigationProperty Name="carrier" Relationship="CatalogService.FreightOrders_carrier" FromRole="FreightOrders" ToRole="BusinessPartners"/>
+<Property Name="carrier_ref" Type="Edm.String"/>
+<Property Name="driver" Type="Edm.String"/>
+<Property Name="driver_name" Type="Edm.String"/>
+<Property Name="cost" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="currency" Type="Edm.String"/>
+<Property Name="vehicle" Type="Edm.String"/>
+<Property Name="vehicle_descr" Type="Edm.String"/>
+<Property Name="reg_number" Type="Edm.String"/>
+<Property Name="weight_cap" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="weight_cap_uom" Type="Edm.String"/>
+<Property Name="volume_cap" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="volume_cap_uom" Type="Edm.String"/>
+<Property Name="used_weight" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="used_volume" Type="Edm.Decimal" sap:variable-scale="true"/>
+<Property Name="pe_org" Type="Edm.Int32"/>
+<Property Name="pe_org_descr" Type="Edm.String"/>
+<Property Name="purch_org" Type="Edm.Int32"/>
+<Property Name="purch_org_descr" Type="Edm.String"/>
+<NavigationProperty Name="source_loc" Relationship="CatalogService.FreightOrders_source_loc" FromRole="FreightOrders" ToRole="Locations"/>
+<Property Name="departure" Type="Edm.DateTimeOffset"/>
+<NavigationProperty Name="dest_loc" Relationship="CatalogService.FreightOrders_dest_loc" FromRole="FreightOrders" ToRole="Locations"/>
+<Property Name="arrival" Type="Edm.DateTimeOffset"/>
+<NavigationProperty Name="items" Relationship="CatalogService.FreightOrderItems_parent" FromRole="FreightOrders" ToRole="FreightOrderItems"/>
+<Property Name="carrier_ID" Type="Edm.Int32"/>
+<Property Name="source_loc_ID" Type="Edm.Int32"/>
+<Property Name="dest_loc_ID" Type="Edm.Int32"/>
+</EntityType>
+<EntityType Name="Locations">
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+<Property Name="loc_code" Type="Edm.String"/>
+<Property Name="loc_descr" Type="Edm.String"/>
+<Property Name="street" Type="Edm.String"/>
+<Property Name="number" Type="Edm.String"/>
+<Property Name="post_code" Type="Edm.String"/>
+<Property Name="city" Type="Edm.String"/>
+<Property Name="region" Type="Edm.String"/>
+<Property Name="country" Type="Edm.String"/>
+</EntityType>
+<Association Name="FreightOrderItems_parent">
+<End Role="FreightOrderItems" Type="CatalogService.FreightOrderItems" Multiplicity="*"/>
+<End Role="FreightOrders" Type="CatalogService.FreightOrders" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="FreightOrders">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrderItems">
+<PropertyRef Name="parent_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="FreightOrderItems_shipper">
+<End Role="FreightOrderItems" Type="CatalogService.FreightOrderItems" Multiplicity="*"/>
+<End Role="BusinessPartners" Type="CatalogService.BusinessPartners" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="BusinessPartners">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrderItems">
+<PropertyRef Name="shipper_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="FreightOrderItems_shipperto">
+<End Role="FreightOrderItems" Type="CatalogService.FreightOrderItems" Multiplicity="*"/>
+<End Role="BusinessPartners" Type="CatalogService.BusinessPartners" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="BusinessPartners">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrderItems">
+<PropertyRef Name="shipperto_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="FreightOrders_carrier">
+<End Role="FreightOrders" Type="CatalogService.FreightOrders" Multiplicity="*"/>
+<End Role="BusinessPartners" Type="CatalogService.BusinessPartners" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="BusinessPartners">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrders">
+<PropertyRef Name="carrier_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="FreightOrders_source_loc">
+<End Role="FreightOrders" Type="CatalogService.FreightOrders" Multiplicity="*"/>
+<End Role="Locations" Type="CatalogService.Locations" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="Locations">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrders">
+<PropertyRef Name="source_loc_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="FreightOrders_dest_loc">
+<End Role="FreightOrders" Type="CatalogService.FreightOrders" Multiplicity="*"/>
+<End Role="Locations" Type="CatalogService.Locations" Multiplicity="0..1"/>
+<ReferentialConstraint>
+<Principal Role="Locations">
+<PropertyRef Name="ID"/>
+</Principal>
+<Dependent Role="FreightOrders">
+<PropertyRef Name="dest_loc_ID"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Annotations Target="CatalogService.FreightOrderItems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+<Annotation Term="UI.Facets">
+<Collection>
+<Record Type="UI.CollectionFacet">
+<PropertyValue Property="ID" String="FOItemDetails"/>
+<PropertyValue Property="Label" String="Item Details"/>
+<PropertyValue Property="Facets">
+<Collection>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Shipper"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Shipper"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Shipper To"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ShipperTo"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Cargo Details"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Cargo"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Cargo">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="descr"/>
+<PropertyValue Property="Label" String="Description"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="quantity"/>
+<PropertyValue Property="Label" String="Quantity"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="weight"/>
+<PropertyValue Property="Label" String="Weight"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="weight_UOM"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="volume"/>
+<PropertyValue Property="Label" String="Volume"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="volume_UOM"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dg_ind"/>
+<PropertyValue Property="Label" String="Dangerous Goods Indicator"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="ItemDescription">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="resource_type"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Quantity"/>
+<PropertyValue Property="Value" Path="quantity"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Shipper">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/bp_number"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/name"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/street"/>
+<PropertyValue Property="Label" String="Street"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/postal_code"/>
+<PropertyValue Property="Label" String="Zip Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/city"/>
+<PropertyValue Property="Label" String="City"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/region"/>
+<PropertyValue Property="Label" String="State"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/country"/>
+<PropertyValue Property="Label" String="Country"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/email"/>
+<PropertyValue Property="Label" String="Email"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/phone"/>
+<PropertyValue Property="Label" String="Phone"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipper/website"/>
+<PropertyValue Property="Label" String="Website"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="ShipperTo">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/bp_number"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/name"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/street"/>
+<PropertyValue Property="Label" String="Street"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/postal_code"/>
+<PropertyValue Property="Label" String="Zip Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/city"/>
+<PropertyValue Property="Label" String="City"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/region"/>
+<PropertyValue Property="Label" String="State"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/country"/>
+<PropertyValue Property="Label" String="Country"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/email"/>
+<PropertyValue Property="Label" String="Email"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/phone"/>
+<PropertyValue Property="Label" String="Phone"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="shipperto/website"/>
+<PropertyValue Property="Label" String="Website"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.HeaderFacets">
+<Collection>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ItemDescription"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="UI.HeaderInfo">
+<Record Type="UI.HeaderInfoType">
+<PropertyValue Property="Description">
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="descr"/>
+</Record>
+</PropertyValue>
+<PropertyValue Property="Title">
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="item_number"/>
+</Record>
+</PropertyValue>
+<PropertyValue Property="TypeName" String="Freight Order Item"/>
+<PropertyValue Property="TypeNamePlural" String="Freight Order Items"/>
+</Record>
+</Annotation>
+<Annotation Term="UI.LineItem">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Item"/>
+<PropertyValue Property="Value" Path="item_number"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Quantity"/>
+<PropertyValue Property="Value" Path="quantity"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Description"/>
+<PropertyValue Property="Value" Path="descr"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Weight"/>
+<PropertyValue Property="Value" Path="weight"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="UOM"/>
+<PropertyValue Property="Value" Path="weight_UOM"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Volume"/>
+<PropertyValue Property="Value" Path="volume"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="UOM"/>
+<PropertyValue Property="Value" Path="volume_UOM"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="CatalogService.FreightOrders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+<Annotation Term="UI.Facets">
+<Collection>
+<Record Type="UI.CollectionFacet">
+<PropertyValue Property="ID" String="FODetails"/>
+<PropertyValue Property="Label" String="Details"/>
+<PropertyValue Property="Facets">
+<Collection>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Carrier"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Carrier"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Source Location"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Source"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Destination Location"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Destination"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Cargo Info"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#CargoInfo"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Dates"/>
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Dates"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Items"/>
+<PropertyValue Property="Target" AnnotationPath="items/@UI.LineItem"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="CargoInfo">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="used_weight"/>
+<PropertyValue Property="Label" String="Weight"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="weight_cap_uom"/>
+<PropertyValue Property="Label" String="UOM"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="used_volume"/>
+<PropertyValue Property="Label" String="Volume"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="volume_cap_uom"/>
+<PropertyValue Property="Label" String="UOM"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Carrier">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/bp_number"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/name"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/city"/>
+<PropertyValue Property="Label" String="City"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/email"/>
+<PropertyValue Property="Label" String="Email"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/phone"/>
+<PropertyValue Property="Label" String="Phone"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="carrier/website"/>
+<PropertyValue Property="Label" String="Website"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Dates">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="departure"/>
+<PropertyValue Property="Label" String="Departure Date"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="arrival"/>
+<PropertyValue Property="Label" String="Arrival Date"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Description">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="exec_status"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Destination">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/loc_code"/>
+<PropertyValue Property="Label" String="Location Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/street"/>
+<PropertyValue Property="Label" String="Street"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/post_code"/>
+<PropertyValue Property="Label" String="Zip Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/city"/>
+<PropertyValue Property="Label" String="City"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/region"/>
+<PropertyValue Property="Label" String="State"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="dest_loc/country"/>
+<PropertyValue Property="Label" String="Country"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Price">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Price"/>
+<PropertyValue Property="Value" Path="cost"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Currency"/>
+<PropertyValue Property="Value" Path="currency"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.FieldGroup" Qualifier="Source">
+<Record Type="UI.FieldGroupType">
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/loc_code"/>
+<PropertyValue Property="Label" String="Location Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/street"/>
+<PropertyValue Property="Label" String="Street"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/post_code"/>
+<PropertyValue Property="Label" String="Zip Code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/city"/>
+<PropertyValue Property="Label" String="City"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/region"/>
+<PropertyValue Property="Label" String="State"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="source_loc/country"/>
+<PropertyValue Property="Label" String="Country"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="UI.HeaderFacets">
+<Collection>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Description"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="UI.ReferenceFacet">
+<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Price"/>
+<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="UI.HeaderInfo">
+<Record Type="UI.HeaderInfoType">
+<PropertyValue Property="Description">
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="fo_type_descr"/>
+</Record>
+</PropertyValue>
+<PropertyValue Property="Title">
+<Record Type="UI.DataField">
+<PropertyValue Property="Value" Path="doc_number"/>
+</Record>
+</PropertyValue>
+<PropertyValue Property="TypeName" String="Freight Order"/>
+<PropertyValue Property="TypeNamePlural" String="Freight Orders"/>
+</Record>
+</Annotation>
+<Annotation Term="UI.LineItem">
+<Collection>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Order Number"/>
+<PropertyValue Property="Value" Path="doc_number"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Order Type"/>
+<PropertyValue Property="Value" Path="fo_type"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Order Type Description"/>
+<PropertyValue Property="Value" Path="fo_type_descr"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Execution Status"/>
+<PropertyValue Property="Value" Path="exec_status"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Mode of Transport"/>
+<PropertyValue Property="Value" Path="transp_mode"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Carrier"/>
+<PropertyValue Property="Value" Path="carrier/bp_number"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Source Location"/>
+<PropertyValue Property="Value" Path="source_loc/loc_code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Departure Date"/>
+<PropertyValue Property="Value" Path="departure"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Destination Location"/>
+<PropertyValue Property="Value" Path="dest_loc/loc_code"/>
+</Record>
+<Record Type="UI.DataField">
+<PropertyValue Property="Label" String="Arrival Date"/>
+<PropertyValue Property="Value" Path="arrival"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="UI.SelectionFields">
+<Collection>
+<PropertyPath>fo_type</PropertyPath>
+<PropertyPath>carrier/bp_number</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="CatalogService.EntityContainer/FreightOrders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record Type="Capabilities.DeleteRestrictionsType">
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record Type="Capabilities.InsertRestrictionsType">
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record Type="Capabilities.UpdateRestrictionsType">
+<PropertyValue Property="Updatable" Bool="false"/>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="CatalogService.FreightOrders/fo_type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+<Annotation Term="Common.Label" String="Order Type"/>
+</Annotations>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>
