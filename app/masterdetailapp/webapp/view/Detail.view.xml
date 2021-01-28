@@ -24,11 +24,25 @@
                         <ObjectAttribute text="{carrier/name}" class="sapUiSmallMarginEnd"/>
                         <ObjectAttribute text="{carrier/phone}" class="sapUiSmallMarginEnd"/>
                         <ObjectAttribute text="{carrier/email}" class="sapUiSmallMarginEnd"/> 
-                        <ObjectAttribute text="{carrier/website}" class="sapUiSmallMarginEnd"/>    
-                        <ObjectAttribute text="{used_weight}" class="sapUiSmallMarginEnd"/>
+                        <ObjectAttribute text="{carrier/website}" class="sapUiSmallMarginEnd"/>                            
                     </VBox>                         
                     <Title text="Capacity Information" class="sapUiSmallMarginEnd"/>                                                                
-                    <ProgressIndicator displayValue="42%" percentValue="42%"  state="Information"/>                    
+                    <ProgressIndicator displayValue="{
+                        parts:[{path:'used_weight'},
+                               {path: 'weight_cap'},
+                               {path: 'used_volume'},
+                               {path: 'volume_cap'}
+                            ],
+                        formatter: '.formatter.calcCapacity'
+                    } %" percentValue="{
+                        parts:[{path:'used_weight'},
+                               {path: 'weight_cap'},
+                               {path: 'used_volume'},
+                               {path: 'volume_cap'}
+                            ],
+                        formatter: '.formatter.calcCapacity'
+                    } %"  state="Information"/>                    
+                    
                 </VBox>
 
                 <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">    

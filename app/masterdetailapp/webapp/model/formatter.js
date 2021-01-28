@@ -15,6 +15,11 @@ sap.ui.define([], function () {
 			}
 
 			return parseFloat(sValue).toFixed(2);
-		}
+        },
+        
+        calcCapacity: function (used_weight, weight_cap,used_volume, volume_cap){
+            //var x = used_weight;
+            return(used_weight/weight_cap*100).toFixed(2);
+        }
 	};
 });
