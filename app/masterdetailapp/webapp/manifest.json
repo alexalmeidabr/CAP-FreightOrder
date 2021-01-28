@@ -17,8 +17,8 @@
 				"uri": "/v2/catalog/",
 				"type": "OData",
 				"settings": {
-					"odataVersion": "2.0"
-					
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
 				}
 			}
 		}

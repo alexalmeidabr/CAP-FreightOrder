@@ -39,8 +39,8 @@ sap.ui.define([
 							"tiles": [{
 								"tileType": "sap.ushell.ui.tile.StaticTile",
 								"properties": {
-									"title": "Freight Orders",
-									"targetURL": "#FreightOrders-display"
+									"title": "Freight Orders Master-Details",
+									"targetURL": "#FreightOrdersMasterDetails-display"
 								}
 							}]
 						}]
@@ -51,11 +51,11 @@ sap.ui.define([
 				"adapter": {
 					"config": {
 						"inbounds": {
-							"FreightOrders-display": {
-								"semanticObject": "FreightOrders",
+							"FreightOrdersMasterDetails-display": {
+								"semanticObject": "FreightOrdersMasterDetails",
 								"action": "display",
 								"description": "Freight Order Navigation",
-								"title": "Freight Orders",
+								"title": "Freight Orders Master-Details",
 								"signature": {
 									"parameters": {}
 								},

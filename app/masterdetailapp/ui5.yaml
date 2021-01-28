@@ -10,8 +10,8 @@ server:
     configuration:
       ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
       backend:
-      - path: /sap/opu/odata
-        url: http://localhost
+      - path: /v2
+        url: https://7c29cc88trial-dev-fonav-srv.cfapps.eu10.hana.ondemand.com
       ui5:
         path: 
         - /resources

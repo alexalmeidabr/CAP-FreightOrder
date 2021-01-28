@@ -21,8 +21,8 @@ server:
     afterMiddleware: compression
     configuration:
       backend:
-      - path: /sap/opu/odata
-        url: http://localhost
+      - path: /v2
+        url: https://7c29cc88trial-dev-fonav-srv.cfapps.eu10.hana.ondemand.com
   - name: fiori-tools-appreload
     afterMiddleware: compression
     configuration:

@@ -14,8 +14,46 @@
 				level="H2"/>
 		</semantic:titleHeading>
 		<semantic:headerContent>
-			<ObjectAttribute title="{i18n>priceTitle}"/>
+                               
+            <FlexBox wrap="Wrap" fitContainer="true">
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                        <Title text="Carrier" class="sapUiSmallMarginEnd"/>                            
+                    </HBox>    
+                    <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">  
+                        <ObjectAttribute text="{carrier/name}" class="sapUiSmallMarginEnd"/>
+                        <ObjectAttribute text="{carrier/phone}" class="sapUiSmallMarginEnd"/>
+                        <ObjectAttribute text="{carrier/email}" class="sapUiSmallMarginEnd"/> 
+                        <ObjectAttribute text="{carrier/website}" class="sapUiSmallMarginEnd"/>    
+                        <ObjectAttribute text="{used_weight}" class="sapUiSmallMarginEnd"/>
+                    </VBox>                         
+                    <Title text="Capacity Information" class="sapUiSmallMarginEnd"/>                                                                
+                    <ProgressIndicator displayValue="42%" percentValue="42%"  state="Information"/>                    
+                </VBox>
 
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">    
+                    <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                        <Title text="Source Location"/>                
+                    </HBox>
+                    <Label text="{source_loc/loc_code}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{source_loc/loc_descr}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{source_loc/street}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{source_loc/post_code} {source_loc/city}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{source_loc/region} {source_loc/country}" class="sapUiSmallMarginEnd"/>                                                
+                </VBox>
+
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">    
+                    <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                        <Title text="Destination Location"/>                
+                    </HBox>
+                    <Label text="{dest_loc/loc_code}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{dest_loc/loc_descr}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{dest_loc/street}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{dest_loc/post_code} {source_loc/city}" class="sapUiSmallMarginEnd"/>
+                    <Label text="{dest_loc/region} {source_loc/country}" class="sapUiSmallMarginEnd"/>                                                
+                </VBox>
+                
+            </FlexBox>
 		</semantic:headerContent>
 		<semantic:content>
 			<Table
@@ -35,28 +73,22 @@
 					</Toolbar>
 				</headerToolbar>
 				<columns>
-					<Column>
-						<Text text="{i18n>detailLineItemTableIDColumn}"/>
-					</Column>
-					<Column
-						minScreenWidth="Tablet"
-						demandPopin="true"
-						hAlign="End">
-						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
-					</Column>
+                    <Column> <Text text="Item number"/> </Column>
+                    <Column> <Text text="Description"/> </Column>
+                    <Column> <Text text="Quantity"/> </Column>
+                    <Column> <Text text="Weight"/> </Column>
+                    <Column> <Text text="Volume"/> </Column>
+                    <Column> <Text text="Dangerous Goods"/> </Column>
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
-							<ObjectIdentifier
-								title="{ID}"
-								text="{ID}"/>
-							<ObjectNumber
-								number="{
-									path: 'item_number',
-									formatter: '.formatter.currencyValue'
-								}"
-/>
+                            <ObjectIdentifier text="{item_number}"/>
+                            <ObjectIdentifier text="{descr}"/>
+                            <ObjectIdentifier text="{quantity}"/>
+                            <ObjectIdentifier text="{weight} {weight_UOM}"/>
+                            <ObjectIdentifier text="{volume} {volume_UOM}"/>
+                            <ObjectIdentifier text="{dg_ind}"/>
 						</cells>
 					</ColumnListItem>
 				</items>

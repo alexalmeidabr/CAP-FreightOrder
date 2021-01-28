@@ -2,7 +2,8 @@
 	controllerName="masterdetailapp.controller.Master"
 	xmlns="sap.m"
 	xmlns:semantic="sap.f.semantic"
-	xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
 
 	<semantic:SemanticPage
 		id="masterPage"
@@ -25,7 +26,10 @@
 					sorter: {
 						path: 'doc_number',
 						descending: false
-					},
+                    },
+                    parameters: {
+                        expand: 'carrier,source_loc,dest_loc'
+                    },
 					groupHeaderFactory: '.createGroupHeader'
 				}"
 				busyIndicatorDelay="{masterView>/delay}"
@@ -63,8 +67,37 @@
 					<ObjectListItem
 						type="Navigation"
 						press=".onSelectionChange"
-						title="{doc_number}"
->
+                        title="{doc_number}"                        
+                        number="{
+                            parts:[{path:'cost'},{path:'currency'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: true}
+                        }">                            
+                        
+                        <firstStatus>
+                            <ObjectStatus text="{fo_type_descr}"></ObjectStatus>
+                        </firstStatus>
+
+                        <secondStatus>
+                            <ObjectStatus text="{exec_status}"></ObjectStatus>
+                        </secondStatus>
+                        
+                        <ObjectAttribute text=" "></ObjectAttribute>
+
+                        <ObjectAttribute 
+                            text="Departure: {
+                                path: 'departure', 
+                                type: 'sap.ui.model.type.DateTime', 
+                                formatOptions: {style: 'short'}}">
+                        </ObjectAttribute>
+
+                        <ObjectAttribute 
+                            text="Arrival: {
+                                path: 'arrival', 
+                                type: 'sap.ui.model.type.DateTime', 
+                                formatOptions: {style: 'short'}}">
+                        </ObjectAttribute>
+
 					</ObjectListItem>
 				</items>
 			</List>
