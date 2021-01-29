@@ -10,23 +10,48 @@
 		busyIndicatorDelay="{detailView>/delay}">
 		<semantic:titleHeading>
 			<Title
-				text="{doc_number}"
+				text="Freight Order {doc_number}"
 				level="H2"/>
 		</semantic:titleHeading>
 		<semantic:headerContent>
                                
             <FlexBox wrap="Wrap" fitContainer="true">
-                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                <!-- Carrier Information-->
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom" 
+                    visible="{ path: 'carrier/name', formatter: '.formatter.visible' }">
                     <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
                         <Title text="Carrier" class="sapUiSmallMarginEnd"/>                            
-                    </HBox>    
+                    </HBox>                        
                     <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">  
                         <ObjectAttribute text="{carrier/name}" class="sapUiSmallMarginEnd"/>
                         <ObjectAttribute text="{carrier/phone}" class="sapUiSmallMarginEnd"/>
                         <ObjectAttribute text="{carrier/email}" class="sapUiSmallMarginEnd"/> 
                         <ObjectAttribute text="{carrier/website}" class="sapUiSmallMarginEnd"/>                            
-                    </VBox>                         
-                    <Title text="Capacity Information" class="sapUiSmallMarginEnd"/>                                                                
+                    </VBox>    
+                </VBox>    
+
+                <!-- Capacity Information-->   
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom" 
+                    visible="{ path: 'used_weight', formatter: '.formatter.visible' }">  
+                    <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">                                
+                        <Title text="Capacity Information" class="sapUiSmallMarginEnd" id="cap_info"/> 
+                    </HBox>
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Label text="Weight Capacity:" class="sapUiSmallMarginEnd"/>
+                        <Text text="{weight_cap} {weight_cap_uom}"/>     
+                    </HBox>     
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Label text="Actual Weight:" class="sapUiSmallMarginEnd"/>
+                        <Text text="{used_weight} {weight_cap_uom}"/>     
+                    </HBox>  
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Label text="Volume Capacity:" class="sapUiSmallMarginEnd"/>
+                        <Text text="{volume_cap} {weight_cap_uom}"/>     
+                    </HBox>     
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Label text="Actual Volume:" class="sapUiSmallMarginEnd"/>
+                        <Text text="{used_volume} {weight_cap_uom}"/>     
+                    </HBox>                                                    
                     <ProgressIndicator displayValue="{
                         parts:[{path:'used_weight'},
                                {path: 'weight_cap'},
@@ -42,9 +67,9 @@
                             ],
                         formatter: '.formatter.calcCapacity'
                     } %"  state="Information"/>                    
-                    
-                </VBox>
+                </VBox>                    
 
+                <!-- Source Location Information-->
                 <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">    
                     <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
                         <Title text="Source Location"/>                
@@ -56,6 +81,7 @@
                     <Label text="{source_loc/region} {source_loc/country}" class="sapUiSmallMarginEnd"/>                                                
                 </VBox>
 
+                <!-- Destination Location Information-->
                 <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">    
                     <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
                         <Title text="Destination Location"/>                

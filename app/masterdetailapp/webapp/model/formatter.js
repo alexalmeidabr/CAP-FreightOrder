@@ -18,8 +18,14 @@ sap.ui.define([], function () {
         },
         
         calcCapacity: function (used_weight, weight_cap,used_volume, volume_cap){
-            //var x = used_weight;
-            return(used_weight/weight_cap*100).toFixed(2);
+            var wp = used_weight/weight_cap*100;
+            var vp = used_volume/volume_cap*100;
+            if(wp>vp) return wp.toFixed(2);
+            else return vp.toFixed(2)            
+        },
+
+        visible : function(value) {
+            return !(typeof(value) == 'undefined' || value == null);
         }
 	};
 });
