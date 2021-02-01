@@ -28,7 +28,7 @@
 						descending: false
                     },
                     parameters: {
-                        expand: 'carrier,source_loc,dest_loc'
+                        expand: 'carrier,driver,source_loc,dest_loc'
                     },
 					groupHeaderFactory: '.createGroupHeader'
 				}"

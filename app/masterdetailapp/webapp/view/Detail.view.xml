@@ -49,13 +49,15 @@
 
                 <!-- Driver Information-->
                 <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom" 
-                    >
+                    visible="{ path: 'driver/name', formatter: '.formatter.visible' }">
                     <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
                         <Title text="Driver" class="sapUiSmallMarginEnd"/>                            
                     </HBox>                        
-                    <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">  
-                        <ObjectAttribute text="{driver/name}" class="sapUiSmallMarginEnd"/>
-                        <ObjectAttribute text="{driver/phone}" class="sapUiSmallMarginEnd"/>                          
+                    <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">   
+                        <Label text="{driver/bp_number}" class="sapUiSmallMarginEnd"/>
+                        <Label text="{driver/name}" class="sapUiSmallMarginEnd"/>
+                        <Label text="{driver/phone}" class="sapUiSmallMarginEnd"/>   
+                                             
                     </VBox>    
                 </VBox>    
 
