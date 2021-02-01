@@ -13,8 +13,7 @@ entity FreightOrders {
     exec_status     : String;
     carrier         : Association to BusinessPartners;
     carrier_ref     : String;
-    driver          : String;
-    driver_name     : String;
+    driver          : Association to BusinessPartners;
     cost            : Decimal;
     currency        : String;
     vehicle         : String;

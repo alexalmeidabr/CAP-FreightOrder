@@ -2,7 +2,8 @@
 	controllerName="masterdetailapp.controller.Detail"
 	xmlns="sap.m"
 	xmlns:semantic="sap.f.semantic"
-	xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
 
 	<semantic:SemanticPage
 		id="detailPage"
@@ -15,7 +16,23 @@
 		</semantic:titleHeading>
 		<semantic:headerContent>
                                
-            <FlexBox wrap="Wrap" fitContainer="true">
+            <FlexBox wrap="Wrap" fitContainer="true">                                
+                
+                <!-- Freight Order Type-->
+                <VBox alignItems="Center" class="sapUiLargeMarginEnd sapUiSmallMarginBottom" >
+					<Avatar id="truck-icon"
+                        src="sap-icon://shipping-status"
+                        displaySize="XL"
+                        backgroundColor="Accent6"
+                        visible="{ parts: [{path:'fo_type'}, {value: 'road'}], formatter: '.formatter.defineTypeIcon' }"/>
+                    <Avatar id="rail-icon"
+                        src="sap-icon://cargo-train"
+                        displaySize="XL"
+                        backgroundColor="Accent6"
+                        visible="{ parts: [{path:'fo_type'}, {value: 'rail'}], formatter: '.formatter.defineTypeIcon' }"/>
+					<Title text="{fo_type_descr}" class="sapUiSmallMarginTop"/>					
+                </VBox>
+                
                 <!-- Carrier Information-->
                 <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom" 
                     visible="{ path: 'carrier/name', formatter: '.formatter.visible' }">
@@ -27,6 +44,18 @@
                         <ObjectAttribute text="{carrier/phone}" class="sapUiSmallMarginEnd"/>
                         <ObjectAttribute text="{carrier/email}" class="sapUiSmallMarginEnd"/> 
                         <ObjectAttribute text="{carrier/website}" class="sapUiSmallMarginEnd"/>                            
+                    </VBox>    
+                </VBox>    
+
+                <!-- Driver Information-->
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom" 
+                    >
+                    <HBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                        <Title text="Driver" class="sapUiSmallMarginEnd"/>                            
+                    </HBox>                        
+                    <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">  
+                        <ObjectAttribute text="{driver/name}" class="sapUiSmallMarginEnd"/>
+                        <ObjectAttribute text="{driver/phone}" class="sapUiSmallMarginEnd"/>                          
                     </VBox>    
                 </VBox>    
 
